@@ -1,9 +1,14 @@
 # IntelliJ/Android Studio
 .idea/
+android/.idea/
+ios/.idea/
 *.iml
 
-# Dart tool files
+# Tool folders
 .dart_tool/
+build/
+.gradle/
 
-# Android-specific IDE settings
-android/.idea/
+# Misc
+pubspec.lock
+example/build/
