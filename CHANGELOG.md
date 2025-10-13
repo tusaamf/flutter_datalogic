@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.13+13] - 13th Oct 2025
+
+* Update setting for barcode type info like (CODE-93, MSI, UPCE-0, UPCE-1..)
+
 ## [1.0.12+12] - 09th July 2025
 
 * Update setting for barcode type info like (UPC-A..), Fix error build

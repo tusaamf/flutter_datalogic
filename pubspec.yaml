@@ -1,7 +1,7 @@
 name: flutter_datalogic
 description: A Flutter plugin for communicate with Datalogic scanners. Supports listen scanner
   status changed or receive data scanned by device have Datalogic services.
-version: 1.0.12+12
+version: 1.0.13+13
 homepage: https://github.com/tusaamf/flutter_datalogic
 
 dependencies:

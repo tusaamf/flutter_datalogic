@@ -8,9 +8,11 @@ import android.os.Bundle
 import android.util.Log
 import com.datalogic.decode.BarcodeManager
 import com.datalogic.decode.DecodeException
+import com.datalogic.decode.configuration.KeyboardWedge
 import com.datalogic.decode.configuration.LengthControlMode
 import com.datalogic.decode.configuration.ScanMode
 import com.datalogic.decode.configuration.ScannerProperties
+import com.datalogic.device.configuration.BooleanProperty
 import com.datalogic.device.configuration.ConfigException
 import com.tusaamf.flutter_datalogic.const.MyChannels
 import com.tusaamf.flutter_datalogic.const.ScannerStatus
@@ -59,6 +61,7 @@ class FlutterDatalogicPlugin : FlutterPlugin, MethodCallHandler, EventChannel.St
             configuration = ScannerProperties.edit(manager)
 
             configuration?.let {
+//                it.keyboardWedge.enable.set(false)
                 // set scan mode only 'single'
                 // https://datalogic.github.io/oemconfig/scanner-settings/#scanner-options
                 it.scannerOptions.scanMode.set(ScanMode.SINGLE)
@@ -68,13 +71,23 @@ class FlutterDatalogicPlugin : FlutterPlugin, MethodCallHandler, EventChannel.St
                 // include the checksum in the label transmission
                 // https://datalogic.github.io/oemconfig/scanner-settings/#code-39
                 it.code39.enable.set(true)
+                // https://datalogic.github.io/oemconfig/scanner-settings/#code-93
+                it.code93.enable.set(true)
                 // https://datalogic.github.io/oemconfig/scanner-settings/#code-128-gs1-128
                 it.code128.enable.set(true)
                 it.code128.gs1_128.set(true)
+                // https://datalogic.github.io/oemconfig/scanner-settings/#msi
+                it.msi.enable.set(true)
+                it.msi.sendChecksum.set(true)
                 // https://datalogic.github.io/oemconfig/scanner-settings/#upc-a
                 it.upcA.enable.set(true)
                 it.upcA.sendChecksum.set(true)
                 it.upcA.convertToEan13.set(true)
+                it.upcA.compositeEnable.set(true)
+                // https://datalogic.github.io/oemconfig/scanner-settings/#upc-e
+                it.upcE.enable.set(true)
+                it.upcE.sendChecksum.set(true)
+                it.upcE.compositeEnable.set(true)
                 // https://datalogic.github.io/oemconfig/scanner-settings/#ean-8
                 it.ean8.enable.set(true)
                 it.ean8.sendChecksum.set(true)
