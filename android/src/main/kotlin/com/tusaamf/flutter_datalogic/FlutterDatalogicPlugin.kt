@@ -211,12 +211,19 @@ class FlutterDatalogicPlugin : FlutterPlugin, MethodCallHandler, EventChannel.St
         scanEventChannel.setStreamHandler(null)
     }
 
-    @SuppressLint("UnspecifiedRegisterReceiverFlag")
-    override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
-        val receiver = SinkBroadcastReceiver(events)
-        registeredReceivers.add(receiver)
+@SuppressLint("UnspecifiedRegisterReceiverFlag")
+override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
+    val receiver = SinkBroadcastReceiver(events)
+    registeredReceivers.add(receiver)
+
+    // برای اندروید 12 و بالاتر
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+        context.registerReceiver(receiver, intentFilter, Context.RECEIVER_EXPORTED)
+    } else {
         context.registerReceiver(receiver, intentFilter)
     }
+}
+
 
     override fun onCancel(arguments: Any?) {
     }
